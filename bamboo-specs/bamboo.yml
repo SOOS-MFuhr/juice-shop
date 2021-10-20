@@ -1,0 +1,83 @@
+version: 2
+
+variables:
+
+  SOOS_PROJECT_NAME: 'MARIANO_BAMBOO_TEST'
+
+  SOOS_LATEST_REPO: "https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download"
+
+  SOOS_TAGS: "https://api.github.com/repos/soos-io/soos-ci-analysis-python/releases/tags/$tag"
+
+  # BUILD/BRANCH SPECIFIC ARGS:
+
+  SOOS_COMMIT_HASH: ""                # ENTER COMMIT HASH HERE IF KNOWN
+
+  SOOS_BRANCH_NAME: ""                # ENTER BRANCH NAME HERE IF KNOWN
+
+  SOOS_BRANCH_URI: ""                 # ENTER BRANCH URI HERE IF KNOWN
+
+  SOOS_BUILD_VERSION: ""              # ENTER BUILD VERSION HERE IF KNOWN
+
+  SOOS_BUILD_URI: ""                  # ENTER BUILD URI HERE IF KNOWN
+
+  SOOS_OPERATING_ENVIRONMENT: ""      # ENTER OPERATING ENVIRONMENT HERE IF KNOWN (default will be provided)
+
+  SOOS_INTEGRATION_NAME: "Bamboo"
+
+
+
+  # OPTIONAL ARGS:
+
+  WORKSPACE: "${PWD}" #PUT YOUR REPO PATH HERE
+
+  SOOS_MODE: "run_and_wait"
+
+  SOOS_ON_FAILURE: "fail_the_build"
+
+  SOOS_DIRS_TO_EXCLUDE: "soos"
+
+  SOOS_FILES_TO_EXCLUDE: ""
+
+  SOOS_ANALYSIS_RESULT_MAX_WAIT: 300
+
+  SOOS_ANALYSIS_RESULT_POLLING_INTERVAL: 10
+
+  SOOS_CHECKOUT_DIR: "./"
+
+  SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
+  
+
+plan:
+  project-key: INTEGRATION-TEST
+  name: Integration test
+  key: IN
+
+stages:
+  - Run SOOS analysis:
+    - Run analysis
+    
+
+Run analysis:
+  tasks:
+    - script: |
+        #!/bin/bash
+
+        export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
+        export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
+
+        mkdir -p "${WORKSPACE}/soos/workspace/"
+
+        cd "${WORKSPACE}/soos"
+
+        echo "downloading files:"
+
+        curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/soos.py -o soos.py
+        curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/requirements.txt -o requirements.txt
+
+        echo "files downloaded"
+
+        cd ${WORKSPACE}
+
+        pip3 install -r soos/requirements.txt
+
+        python3 soos/soos.py -m="${SOOS_MODE}" -of="${SOOS_ON_FAILURE}" -dte="${SOOS_DIRS_TO_EXCLUDE}" -fte="${SOOS_FILES_TO_EXCLUDE}" -wd="${SOOS_CHECKOUT_DIR}" -armw=${SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${SOOS_API_BASE_URL}" -scp="${SOOS_CHECKOUT_DIR}" -pn="${SOOS_PROJECT_NAME}" -ch="${SOOS_COMMIT_HASH}" -bn="${SOOS_BRANCH_NAME}" -bruri="${SOOS_BRANCH_URI}" -bldver="${SOOS_BUILD_VERSION}" -blduri="${SOOS_BUILD_URI}" -oe="${SOOS_OPERATING_ENVIRONMENT}" -intn="${SOOS_INTEGRATION_NAME}"
