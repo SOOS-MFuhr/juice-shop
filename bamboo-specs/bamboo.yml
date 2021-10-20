@@ -50,6 +50,7 @@ variables:
 plan:
   project-key: IN
   name: integration-test
+  key: IN
 
 stages:
   - Run SOOS analysis:
