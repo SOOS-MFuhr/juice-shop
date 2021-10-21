@@ -44,7 +44,7 @@ Run analysis:
 
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
-
+        export WORKSPACE=${bamboo.WORKSPACE}
         # OPTIONAL VARIABLES:
         export SOOS_COMMIT_HASH: " "                # ENTER COMMIT HASH HERE IF KNOWN
 
@@ -63,9 +63,9 @@ Run analysis:
         echo "where am I?"
         pwd
 
-        mkdir -p "${bamboo.WORKSPACE}/soos/workspace/"
+        mkdir -p "${WORKSPACE}/soos/workspace/"
 
-        cd "${bamboo.WORKSPACE}/soos"
+        cd "${WORKSPACE}/soos"
 
         echo "downloading files:"
 
@@ -75,8 +75,8 @@ Run analysis:
         echo "files downloaded"
 
         echo "Located at: ${PWD}"
-        echo ${bamboo.WORKSPACE}
-        cd "${bamboo.WORKSPACE}/"
+        echo ${WORKSPACE}
+        cd "${WORKSPACE}"
         echo "Located at: ${PWD}"
         pip3 install -r requirements.txt
 
