@@ -79,7 +79,7 @@ Run analysis:
 
         cd "$WORKSPACE"
 
-        pip3 install -r requirements.txt --user
+        pip install -r requirements.txt --user
 
         python3 soos.py -m="${bamboo.SOOS_MODE}" -of="${bamboo.SOOS_ON_FAILURE}" -dte="${bamboo.SOOS_DIRS_TO_EXCLUDE}" -wd="${bamboo.SOOS_CHECKOUT_DIR}" -armw=${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${bamboo.SOOS_API_BASE_URL}" -scp="${bamboo.SOOS_CHECKOUT_DIR}" -pn="${bamboo.SOOS_PROJECT_NAME}"  -intn="${bamboo.SOOS_INTEGRATION_NAME}"
 
