@@ -63,8 +63,8 @@ Run analysis:
         echo "where am I?"
         pwd
         echo ${PWD}
-        
-        mkdir "${bamboo.WORKSPACE}/soos/workspace/"
+
+        mkdir -p "${bamboo.WORKSPACE}/soos/workspace/"
 
         cd "${bamboo.WORKSPACE}/soos"
 
