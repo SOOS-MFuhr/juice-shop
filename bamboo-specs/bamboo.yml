@@ -75,9 +75,8 @@ Run analysis:
 
         mkdir -p "$WORKSPACE/soos/pip/"
 
-        python3 get-pip.py --root=$WORKSPACE/soos/pip/ --ignore-installed 
-        echo "$WORKSPACE/soos/pip/""
-        PATH=$WORKSPACE/soos/pip/usr/local/bin:$PATH
+        python3 get-pip.py
+        PATH=$WORKSPACE/soos/temp:$PATH
 
         cd "$WORKSPACE"
 
