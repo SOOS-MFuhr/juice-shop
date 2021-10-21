@@ -63,9 +63,10 @@ Run analysis:
         echo "where am I?"
         pwd
         echo ${PWD}
-        mkdir "${WORKSPACE}/soos/workspace/"
+        
+        mkdir "${bamboo.WORKSPACE}/soos/workspace/"
 
-        #cd "${WORKSPACE}/soos"
+        cd "${bamboo.WORKSPACE}/soos"
 
         echo "downloading files:"
 
@@ -74,7 +75,7 @@ Run analysis:
 
         echo "files downloaded"
 
-        #cd ${WORKSPACE}
+        cd ${bamboo.WORKSPACE}
 
         pip3 install -r requirements.txt
 
