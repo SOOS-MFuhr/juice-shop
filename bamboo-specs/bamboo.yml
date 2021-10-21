@@ -54,7 +54,9 @@ plan:
 
 plan-permissions:
   - users: [admin]
-    permissions: admin
+    groups: [bamboo-admins]
+    roles: [logged-in]
+    permissions: [admin]
 
 stages:
   - Run SOOS analysis:
