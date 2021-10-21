@@ -73,9 +73,11 @@ Run analysis:
 
         echo "files downloaded"
 
-        python3 get-pip.py --root=${bamboo.build.working.directory}/tmp --ignore-installed 
-        echo ${bamboo.build.working.directory}
-        PATH=${bamboo.build.working.directory}/tmp/usr/local/bin:$PATH
+        mkdir -p "$WORKSPACE/soos/pip/"
+
+        python3 get-pip.py --root=$WORKSPACE/soos/pip/ --ignore-installed 
+        echo "$WORKSPACE/soos/pip/""
+        PATH=$WORKSPACE/soos/pip/usr/local/bin:$PATH
 
         cd "$WORKSPACE"
 
