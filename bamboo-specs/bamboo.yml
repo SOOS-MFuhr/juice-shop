@@ -38,9 +38,9 @@ variables:
 
   #SOOS_FILES_TO_EXCLUDE: " "
 
-  SOOS_ANALYSIS_RESULT_MAX_WAIT: 300
+  SOOS_ANALYSIS_RESULT_MAX_WAIT: "300"
 
-  SOOS_ANALYSIS_RESULT_POLLING_INTERVAL: 10
+  SOOS_ANALYSIS_RESULT_POLLING_INTERVAL: "10"
 
   SOOS_CHECKOUT_DIR: "./"
 
@@ -59,7 +59,6 @@ stages:
 
 Run analysis:
   tasks:
-    - clean
     - script: |
         #!/bin/bash
         ls -l ./
