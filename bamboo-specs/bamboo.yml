@@ -66,9 +66,9 @@ Run analysis:
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
 
-        mkdir -p "${WORKSPACE}/soos/workspace/"
+        #mkdir -p "${WORKSPACE}/soos/workspace/"
 
-        cd "${WORKSPACE}/soos"
+        #cd "${WORKSPACE}/soos"
 
         echo "downloading files:"
 
@@ -77,7 +77,7 @@ Run analysis:
 
         echo "files downloaded"
 
-        cd ${WORKSPACE}
+        #cd ${WORKSPACE}
 
         pip3 install -r soos/requirements.txt
 
