@@ -56,12 +56,14 @@ Run analysis:
     - script: |
         #!/bin/bash
 
-        echo "user: ${whoami}"
-
+        echo "user: "
+        whoami
+        
         su -
 
-        echo "user: ${whoami}"
-        apt install python3-pip
+        echo "user: "
+        whoami
+        apt install python3-pip -y
 
         su -bamboo
 
