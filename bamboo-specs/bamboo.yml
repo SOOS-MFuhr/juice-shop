@@ -47,12 +47,6 @@ variables:
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   
 
-projects:
-  plans: [SOOS analysis]
-  permissions:
-      users: [admin]
-      grant: [VIEW, EDIT, BUILD, CLONE, ADMIN]
-
 plan:
   project-key: IN
   name: SOOS analysis
@@ -67,6 +61,8 @@ Run analysis:
   tasks:
     - script: |
         #!/bin/bash
+
+        sudo su
 
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
