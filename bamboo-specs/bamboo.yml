@@ -63,6 +63,7 @@ Run analysis:
         #!/bin/bash
 
         chmod -R 777 ./
+        whoami
 
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
