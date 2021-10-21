@@ -57,6 +57,8 @@ Run analysis:
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
 
+        apt install python3-pip -y
+
         WORKSPACE=${PWD}
 
         mkdir -p "$WORKSPACE/soos/workspace/"
