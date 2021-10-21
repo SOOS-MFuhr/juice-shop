@@ -69,17 +69,17 @@ Run analysis:
 
         curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/soos.py -o soos.py
         curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/requirements.txt -o requirements.txt
-        #curl -LJO https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        curl -LJO https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 
         echo "files downloaded"
 
-        #python3 get-pip.py --user
+        python3 get-pip.py --user
 
-        #PATH=$PATH:$HOME/.local/bin
+        PATH=$PATH:$HOME/.local/bin
 
         cd "$WORKSPACE"
 
-        pip3 install -r requirements.txt # --user
+        pip3 install -r requirements.txt --user
 
         python3 soos.py -m="${bamboo.SOOS_MODE}" -of="${bamboo.SOOS_ON_FAILURE}" -dte="${bamboo.SOOS_DIRS_TO_EXCLUDE}" -wd="${bamboo.SOOS_CHECKOUT_DIR}" -armw=${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${bamboo.SOOS_API_BASE_URL}" -scp="${bamboo.SOOS_CHECKOUT_DIR}" -pn="${bamboo.SOOS_PROJECT_NAME}"  -intn="${bamboo.SOOS_INTEGRATION_NAME}"
 
