@@ -51,11 +51,19 @@ stages:
     
 
 Run analysis:
-  docker: python
   tasks:
   
     - script: |
         #!/bin/bash
+
+        echo "user: ${whoami}"
+
+        su -
+
+        echo "user: ${whoami}"
+        apt install python3-pip
+
+        su -bamboo
 
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
