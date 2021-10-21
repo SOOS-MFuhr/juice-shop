@@ -47,15 +47,16 @@ variables:
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   
 
+projects:
+  plans: [SOOS analysis]
+  permissions:
+      users: [admin]
+      grant: [VIEW, EDIT, BUILD, CLONE, ADMIN]
+
 plan:
   project-key: IN
   name: SOOS analysis
   key: SOOS
-  plan-permissions:
-    - users: [admin]
-      groups: [bamboo-admins]
-      roles: [logged-in]
-      permissions: [admin]
 
 stages:
   - Run SOOS analysis:
