@@ -52,7 +52,6 @@ stages:
 
 Run analysis:
   tasks:
-  
     - script: |
         #!/bin/bash
 
@@ -69,14 +68,8 @@ Run analysis:
 
         curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/soos.py -o soos.py
         curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/requirements.txt -o requirements.txt
-        curl -LJO https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 
         echo "files downloaded"
-
-        mkdir -p "$WORKSPACE/soos/pip/"
-
-        python3 get-pip.py
-        PATH=$WORKSPACE/soos/temp:$PATH
 
         cd "$WORKSPACE"
 
@@ -86,3 +79,7 @@ Run analysis:
 
         # -fte="${bamboo.SOOS_FILES_TO_EXCLUDE}" 
         # -ch="${SOOS_COMMIT_HASH}" -bn="${SOOS_BRANCH_NAME}" -bruri="${SOOS_BRANCH_URI}" -bldver="${SOOS_BUILD_VERSION}" -blduri="${SOOS_BUILD_URI}" -oe="${SOOS_OPERATING_ENVIRONMENT}"
+
+
+docker:
+  image: python
