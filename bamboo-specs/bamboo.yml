@@ -62,7 +62,7 @@ Run analysis:
     - script: |
         #!/bin/bash
         ls -l ./
-        chown -R bamboo ./
+        chown -R root ./
         whoami
         ls -l ./
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
