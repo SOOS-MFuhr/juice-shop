@@ -59,11 +59,9 @@ stages:
 
 Run analysis:
   tasks:
+    - clean
     - script: |
         #!/bin/bash
-        ls -l ./
-        chown -R root ./
-        whoami
         ls -l ./
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
