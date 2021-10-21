@@ -43,6 +43,7 @@ plan:
   project-key: IN
   name: SOOS analysis
   key: SOOS
+  
 
 stages:
   - Run SOOS analysis:
@@ -50,14 +51,17 @@ stages:
     
 
 Run analysis:
+  docker: python
+  requirements:
+    - python3
+    - python3-pip
   tasks:
+  
     - script: |
         #!/bin/bash
 
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
-
-        apt install python3-pip -y
 
         WORKSPACE=${PWD}
 
