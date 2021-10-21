@@ -10,17 +10,17 @@ variables:
 
   # BUILD/BRANCH SPECIFIC ARGS:
 
-  SOOS_COMMIT_HASH: " "                # ENTER COMMIT HASH HERE IF KNOWN
+  SOOS_COMMIT_HASH: ""                # ENTER COMMIT HASH HERE IF KNOWN
 
-  SOOS_BRANCH_NAME: " "                # ENTER BRANCH NAME HERE IF KNOWN
+  SOOS_BRANCH_NAME: ""                # ENTER BRANCH NAME HERE IF KNOWN
 
-  SOOS_BRANCH_URI: " "                 # ENTER BRANCH URI HERE IF KNOWN
+  SOOS_BRANCH_URI: ""                 # ENTER BRANCH URI HERE IF KNOWN
 
-  SOOS_BUILD_VERSION: " "              # ENTER BUILD VERSION HERE IF KNOWN
+  SOOS_BUILD_VERSION: ""              # ENTER BUILD VERSION HERE IF KNOWN
 
-  SOOS_BUILD_URI: " "                  # ENTER BUILD URI HERE IF KNOWN
+  SOOS_BUILD_URI: ""                  # ENTER BUILD URI HERE IF KNOWN
 
-  SOOS_OPERATING_ENVIRONMENT: " "      # ENTER OPERATING ENVIRONMENT HERE 
+  SOOS_OPERATING_ENVIRONMENT: ""      # ENTER OPERATING ENVIRONMENT HERE 
   
 
   SOOS_INTEGRATION_NAME: "Bamboo"
@@ -37,7 +37,7 @@ variables:
 
   SOOS_DIRS_TO_EXCLUDE: "soos"
 
-  SOOS_FILES_TO_EXCLUDE: " "
+  #SOOS_FILES_TO_EXCLUDE: ""
 
   SOOS_ANALYSIS_RESULT_MAX_WAIT: 300
 
@@ -80,5 +80,7 @@ Run analysis:
         #cd ${WORKSPACE}
 
         pip3 install -r requirements.txt
+
+        echo ${bamboo.SOOS_FILES_TO_EXCLUDE}
 
         python3 soos.py -m="${bamboo.SOOS_MODE}" -of="${bamboo.SOOS_ON_FAILURE}" -dte="${bamboo.SOOS_DIRS_TO_EXCLUDE}" -fte="${bamboo.SOOS_FILES_TO_EXCLUDE}" -wd="${bamboo.SOOS_CHECKOUT_DIR}" -armw=${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${bamboo.SOOS_API_BASE_URL}" -scp="${bamboo.SOOS_CHECKOUT_DIR}" -pn="${bamboo.SOOS_PROJECT_NAME}" -ch="${bamboo.SOOS_COMMIT_HASH}" -bn="${bamboo.SOOS_BRANCH_NAME}" -bruri="${bamboo.SOOS_BRANCH_URI}" -bldver="${bamboo.SOOS_BUILD_VERSION}" -blduri="${bamboo.SOOS_BUILD_URI}" -oe="${bamboo.SOOS_OPERATING_ENVIRONMENT}" -intn="${bamboo.SOOS_INTEGRATION_NAME}"
