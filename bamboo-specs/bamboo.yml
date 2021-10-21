@@ -62,7 +62,7 @@ Run analysis:
     - script: |
         #!/bin/bash
 
-        sudo su
+        chmod -R +rwx ./
 
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
