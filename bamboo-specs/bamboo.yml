@@ -61,10 +61,10 @@ Run analysis:
   tasks:
     - script: |
         #!/bin/bash
-
-        chmod -R 777 .
+        ls -l ./
+        chown -R bamboo ./
         whoami
-
+        ls -l ./
         export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
 
