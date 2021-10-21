@@ -51,12 +51,11 @@ plan:
   project-key: IN
   name: SOOS analysis
   key: SOOS
-
-plan-permissions:
-  - users: [admin]
-    groups: [bamboo-admins]
-    roles: [logged-in]
-    permissions: [admin]
+  plan-permissions:
+    - users: [admin]
+      groups: [bamboo-admins]
+      roles: [logged-in]
+      permissions: [admin]
 
 stages:
   - Run SOOS analysis:
