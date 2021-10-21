@@ -49,8 +49,12 @@ variables:
 
 plan:
   project-key: IN
-  name: Soos analysis
+  name: SOOS analysis
   key: SOOS
+
+plan-permissions:
+  - users: [admin]
+    permissions: admin
 
 stages:
   - Run SOOS analysis:
