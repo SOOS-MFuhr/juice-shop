@@ -75,7 +75,8 @@ Run analysis:
         echo "files downloaded"
 
         echo "Located at: ${PWD}"
-        cd ${bamboo.WORKSPACE}
+        echo ${bamboo.WORKSPACE}
+        cd "${bamboo.WORKSPACE}/"
         echo "Located at: ${PWD}"
         pip3 install -r requirements.txt
 
