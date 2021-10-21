@@ -38,9 +38,9 @@ variables:
 
   #SOOS_FILES_TO_EXCLUDE: " "
 
-  SOOS_ANALYSIS_RESULT_MAX_WAIT: "300"
+  SOOS_ANALYSIS_RESULT_MAX_WAIT: 300
 
-  SOOS_ANALYSIS_RESULT_POLLING_INTERVAL: "10"
+  SOOS_ANALYSIS_RESULT_POLLING_INTERVAL: 10
 
   SOOS_CHECKOUT_DIR: "./"
 
@@ -80,7 +80,4 @@ Run analysis:
 
         pip3 install -r requirements.txt
 
-        echo ${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT}
-        echo ${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL}
-
-        python3 soos.py -m="${SOOS_MODE}" -of="${SOOS_ON_FAILURE}" -dte="${SOOS_DIRS_TO_EXCLUDE}" -fte="${SOOS_FILES_TO_EXCLUDE}" -wd="${SOOS_CHECKOUT_DIR}" -armw=${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${SOOS_API_BASE_URL}" -scp="${SOOS_CHECKOUT_DIR}" -pn="${SOOS_PROJECT_NAME}" -ch="${SOOS_COMMIT_HASH}" -bn="${SOOS_BRANCH_NAME}" -bruri="${SOOS_BRANCH_URI}" -bldver="${SOOS_BUILD_VERSION}" -blduri="${SOOS_BUILD_URI}" -oe="${SOOS_OPERATING_ENVIRONMENT}" -intn="${SOOS_INTEGRATION_NAME}"
+        python3 soos.py -m="${bamboo.SOOS_MODE}" -of="${bamboo.SOOS_ON_FAILURE}" -dte="${bamboo.SOOS_DIRS_TO_EXCLUDE}" -fte="${bamboo.SOOS_FILES_TO_EXCLUDE}" -wd="${bamboo.SOOS_CHECKOUT_DIR}" -armw=${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${bamboo.SOOS_API_BASE_URL}" -scp="${bamboo.SOOS_CHECKOUT_DIR}" -pn="${bamboo.SOOS_PROJECT_NAME}" -ch="${bamboo.SOOS_COMMIT_HASH}" -bn="${bamboo.SOOS_BRANCH_NAME}" -bruri="${bamboo.SOOS_BRANCH_URI}" -bldver="${bamboo.SOOS_BUILD_VERSION}" -blduri="${bamboo.SOOS_BUILD_URI}" -oe="${bamboo.SOOS_OPERATING_ENVIRONMENT}" -intn="${bamboo.SOOS_INTEGRATION_NAME}"
