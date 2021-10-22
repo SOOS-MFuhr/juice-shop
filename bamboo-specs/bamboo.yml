@@ -43,8 +43,6 @@ plan:
   project-key: IN
   name: SOOS analysis
   key: SOOS
-docker:
-  image: python
   
 
 stages:
@@ -54,6 +52,7 @@ stages:
 
 Run analysis:
   tasks:
+    - docker: python
     - script: |
         #!/bin/bash
 
