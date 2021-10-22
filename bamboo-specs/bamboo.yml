@@ -43,8 +43,7 @@ plan:
   project-key: IN
   name: SOOS analysis
   key: SOOS
-docker:
-  image: python
+
   
 
 stages:
