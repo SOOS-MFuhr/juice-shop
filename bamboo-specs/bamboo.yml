@@ -54,6 +54,7 @@ stages:
 
 Run analysis:
   tasks:
+    - clean
     - script: |
         #!/bin/bash
 
