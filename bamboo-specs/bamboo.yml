@@ -51,8 +51,8 @@ stages:
     
 
 Run analysis:
+  docker: python
   tasks:
-    - docker: python
     - script: |
         #!/bin/bash
 
