@@ -60,7 +60,7 @@ Run analysis:
         export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
 
         WORKSPACE=${PWD}
-
+        echo $WORKSPACE
         mkdir -p "$WORKSPACE/soos/workspace/"
 
         cd "$WORKSPACE/soos"
@@ -72,6 +72,7 @@ Run analysis:
 
         echo "files downloaded"
 
+        echo $WORKSPACE
         cd "$WORKSPACE"
 
         pip3 install -r requirements.txt --user
