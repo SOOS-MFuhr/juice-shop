@@ -9,7 +9,7 @@ variables:
   
 
 plan:
-  project-key: PROJECT_KEY
+  project-key: IN
   name: SOOS Analysis
   key: SOOS
   
