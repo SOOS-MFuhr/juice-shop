@@ -9,7 +9,7 @@ variables:
   
 
 plan:
-  project-key: IN
+  project-key: DAST
   name: SOOS Analysis
   key: SOOS
   
