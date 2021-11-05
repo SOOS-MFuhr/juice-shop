@@ -23,5 +23,7 @@ Run analysis:
   docker:
     image: docker:stable-dind
   tasks:
-    - script: docker run -it --rm ghcr.io/soos-abenassi/dast:0.6
+    - script: |
+        docker run --rm ghcr.io/soos-abenassi/dast:0.6
+        echo "OK"
         
