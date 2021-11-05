@@ -22,10 +22,10 @@ stages:
 Run analysis:
   docker:
     image: docker:stable-dind
-    docker-run-arguments:
-    - --privileged
+    #docker-run-arguments:
+    #- --privileged
   tasks:
     - script: |
-        docker run --rm ghcr.io/soos-abenassi/dast:0.6
+        docker run --privileged --rm ghcr.io/soos-abenassi/dast:0.6
         echo "OK"
         
