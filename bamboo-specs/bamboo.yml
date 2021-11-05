@@ -23,7 +23,7 @@ Run analysis:
   docker:
     image: ghcr.io/soos-abenassi/dast:0.6
     docker-run-arguments:
-      - --user bamboo
+      - groupadd -r bamboo && useradd -r -g bamboo bamboo
   tasks:
     - script: |
         #!/bin/bash
