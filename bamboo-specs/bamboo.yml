@@ -20,7 +20,10 @@ stages:
     
 
 Run analysis:
-  docker: ghcr.io/soos-abenassi/dast:0.6
+  docker:
+    image: ghcr.io/soos-abenassi/dast:0.6
+    docker-run-arguments:
+      - --user=bamboo
   tasks:
     - script: |
         #!/bin/bash
