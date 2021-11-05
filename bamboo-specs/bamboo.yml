@@ -21,7 +21,7 @@ stages:
 
 Run analysis:
   docker:
-    image: ghcr.io/soos-abenassi/dast:0.6
+    image: python #ghcr.io/soos-abenassi/dast:0.6
   tasks:
     - script: |
         #!/bin/bash
