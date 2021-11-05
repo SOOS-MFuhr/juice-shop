@@ -29,6 +29,6 @@ Run analysis:
     #- --privileged
   tasks:
     - script: |
-        docker run --privileged --rm ghcr.io/soos-abenassi/dast:0.6
+        docker run -it --rm ghcr.io/soos-abenassi/dast:0.6
         echo "OK"
         
