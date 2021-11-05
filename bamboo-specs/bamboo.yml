@@ -23,4 +23,6 @@ Run analysis:
   docker: python
   tasks:
     - script: |
-        
+        #!/bin/bash
+
+        echo "OK"
