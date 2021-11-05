@@ -20,7 +20,7 @@ stages:
     
 
 Run analysis:
-  docker: python
+  docker: ghcr.io/soos-abenassi/dast:0.6
   tasks:
     - script: |
         #!/bin/bash
