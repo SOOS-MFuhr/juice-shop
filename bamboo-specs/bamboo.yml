@@ -33,9 +33,9 @@ Run analysis:
     - script: |
 
         docker run -d --name dast ghcr.io/soos-abenassi/dast:0.6
-
+        echo " run OK "
         docker exec -it dast bash
-
+        echo " exec OK "
         cd /zap/
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=\"${bamboo.SOOS_PROJECT_NAME}\" --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
         if [  "$bamboo.SOOS_DEBUG" == "true" ]; then
