@@ -37,7 +37,7 @@ Run analysis:
         echo $PARAMS
         echo '${bamboo.SOOS_DEBUG}'
     
-        if [[  -z '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "false" ]]; then
+        if [[  -v '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "false" ]]; then
             echo "OK 1er IF"
         fi
 
