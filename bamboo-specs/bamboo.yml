@@ -37,7 +37,7 @@ Run analysis:
         if [  "${bamboo.SOOS_DEBUG}" == "true" ]; then
             PARAMS+=" --debug"
         fi
-        if [  "${bamboo.SOOS_AJAX_SPIDER}" == "true" ]; then
+        if [  ${bamboo.SOOS_AJAX_SPIDER} == "true" ]; then
             PARAMS+=" --ajaxSpider"
         fi
         if [  "${bamboo.SOOS_RULES}" != "" ]; then
