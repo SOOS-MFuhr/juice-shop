@@ -21,9 +21,9 @@ stages:
 
 Run analysis:
   docker:
-    image: docker:dind
-    volumes: 
-      "/var/run/docker.sock": "/var/run/docker.sock"
+    image: docker:stable-dind
+    #volumes: 
+      #"/var/run/docker.sock": "/var/run/docker.sock"
     use-default-volumes: false
     #docker-run-arguments:
     #- --privileged
