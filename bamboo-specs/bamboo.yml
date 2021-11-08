@@ -6,7 +6,7 @@ variables:
   SOOS_SCAN_MODE: "baseline"
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
-
+  SOOS_DEBUG: "false"
   
 
 plan:
@@ -36,16 +36,18 @@ Run analysis:
 
         echo $PARAMS
         echo '${bamboo.SOOS_DEBUG}'
-        echo '${bamboo.SOOS_AJAX_SPIDER}'
+    
+        if [[  -z '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "false" ]]; then
+            echo "OK 1er IF"
+        fi
 
+
+        
         if [[  -z '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "true" ]]; then
             PARAMS="$PARAMS --debug"
-            echo "OK 1er IF"
         fi
         if [[  -z '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
             PARAMS="$PARAMS --ajaxSpider"
-            echo "OK 2do IF"
-            echo $PARAMS
         fi
         if [[  -z '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' != "" ]]; then
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
