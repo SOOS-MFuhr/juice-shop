@@ -40,31 +40,5 @@ Run analysis:
 
         echo $PARAMS + " line 41"
 
-        if [  ${bamboo.SOOS_DEBUG} == "true" ]; then
-            PARAMS+=" --debug"
-        fi
-        if [  ${bamboo.SOOS_AJAX_SPIDER} == "true" ]; then
-            PARAMS+=" --ajaxSpider"
-        fi
-        if [  ${bamboo.SOOS_RULES} != "" ]; then
-            PARAMS+=" --rules="${bamboo.SOOS_RULES}
-        fi
-        if [  ${bamboo.SOOS_CONTEXT_FILE} != "" ]; then
-            PARAMS+=" --contextFile="${bamboo.SOOS_CONTEXT_FILE}
-        fi
-        if [  ${bamboo.SOOS_CONTEXT_USER} != "" ]; then
-            PARAMS+=" --contextUser="${bamboo.SOOS_CONTEXT_USER}
-        fi
-        if [  ${bamboo.SOOS_FULL_SCAN_MINUTES} != "" ]; then
-            PARAMS+=" --fullScanMinutes="${bamboo.SOOS_FULL_SCAN_MINUTES}
-        fi
-        if [  ${bamboo.SOOS_API_SCAN_FORMAT} != "" ]; then
-            PARAMS+=" --apiScanFormat="${bamboo.SOOS_API_SCAN_FORMAT}
-        fi
-        if [  ${bamboo.bamboo.SOOS_LEVEL} != "" ]; then
-            PARAMS+=" --level="${bamboo.SOOS_LEVEL}
-        fi
-        
-        docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
 
         
