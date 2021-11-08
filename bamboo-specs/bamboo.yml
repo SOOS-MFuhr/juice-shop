@@ -36,11 +36,12 @@ Run analysis:
         docker run -d --name dast ghcr.io/soos-abenassi/dast:0.6
         echo " run OK "
 
-        printf "cd /zap/ PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=\"${bamboo.SOOS_PROJECT_NAME}\" --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}" \n" > pythonParams.sh
+        echo "cd /zap/" > pythonParams.sh
+        echo "PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=\"${bamboo.SOOS_PROJECT_NAME}\" --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}" \n" >> pythonParams.sh
         
         chmod +x pythonParams.sh
         
         cat pythonParams.sh
-        docker exec dast sh pythonParams.sh
+        docker exec dast pythonParams.sh
 
         docker rm -fv dast
