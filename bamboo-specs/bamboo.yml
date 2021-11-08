@@ -35,33 +35,36 @@ Run analysis:
         docker rm -f dast
         docker run -d --name dast ghcr.io/soos-abenassi/dast:0.6
         echo " run OK "
-    
-        cd /zap/
-        PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=\"${bamboo.SOOS_PROJECT_NAME}\" --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
-        if [  "$bamboo.SOOS_DEBUG" == "true" ]; then
-            PARAMS+=" --debug"
-        fi
-        if [  "$bamboo.SOOS_AJAX_SPIDER" == "true" ]; then
-            PARAMS+=" --ajaxSpider"
-        fi
-        if [  "$bamboo.SOOS_RULES" != "" ]; then
-            PARAMS+=" --rules=\"$bamboo.SOOS_RULES\""
-        fi
-        if [  "$bamboo.SOOS_CONTEXT_FILE" != "" ]; then
-            PARAMS+=" --contextFile=${bamboo.SOOS_CONTEXT_FILE}"
-        fi
-        if [  "$bamboo.SOOS_CONTEXT_USER" != "" ]; then
-            PARAMS+=" --contextUser=${bamboo.SOOS_CONTEXT_USER}"
-        fi
-        if [  "$bamboo.SOOS_FULL_SCAN_MINUTES" != "" ]; then
-            PARAMS+=" --fullScanMinutes=${bamboo.SOOS_FULL_SCAN_MINUTES}"
-        fi
-        if [  "$bamboo.SOOS_API_SCAN_FORMAT" != "" ]; then
-            PARAMS+=" --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}"
-        fi
-        if [  "$bamboo.bamboo.SOOS_LEVEL" != "" ]; then
-            PARAMS+=" --level=${bamboo.bamboo.SOOS_LEVEL}"
-        fi
-        python3 main.py ${bamboo.SOOS_TARGET_URL} $PARAMS
+
+        printf "cd /zap/ \n
+              PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=\"${bamboo.SOOS_PROJECT_NAME}\" --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}" \n
+              if [  "$bamboo.SOOS_DEBUG" == "true" ]; then \n
+                  PARAMS+=" --debug" \n
+              fi \n
+              if [  "$bamboo.SOOS_AJAX_SPIDER" == "true" ]; then \n
+                  PARAMS+=" --ajaxSpider" \n
+              fi \n
+              if [  "$bamboo.SOOS_RULES" != "" ]; then \n
+                  PARAMS+=" --rules=\"$bamboo.SOOS_RULES\"" \n
+              fi \n
+              if [  "$bamboo.SOOS_CONTEXT_FILE" != "" ]; then \n
+                  PARAMS+=" --contextFile=${bamboo.SOOS_CONTEXT_FILE}" \n
+              fi \n
+              if [  "$bamboo.SOOS_CONTEXT_USER" != "" ]; then \n
+                  PARAMS+=" --contextUser=${bamboo.SOOS_CONTEXT_USER}" \n
+              fi \n
+              if [  "$bamboo.SOOS_FULL_SCAN_MINUTES" != "" ]; then \n
+                  PARAMS+=" --fullScanMinutes=${bamboo.SOOS_FULL_SCAN_MINUTES}" \n
+              fi \n
+              if [  "$bamboo.SOOS_API_SCAN_FORMAT" != "" ]; then \n
+                  PARAMS+=" --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}" \n
+              fi \n
+              if [  "$bamboo.bamboo.SOOS_LEVEL" != "" ]; then \n
+                  PARAMS+=" --level=${bamboo.bamboo.SOOS_LEVEL}" \n
+              fi \n
+              python3 main.py ${bamboo.SOOS_TARGET_URL} $PARAMS
+        " >> pythonParams.sh
+
+        docker exec -i dast sh pythonParams.sh
 
         docker rm -fv dast
