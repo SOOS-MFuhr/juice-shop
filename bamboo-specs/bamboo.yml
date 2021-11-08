@@ -34,11 +34,11 @@ Run analysis:
 
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
         
-        echo $PARAMS
+        echo $PARAMS + " line 37"
 
         PARAMS= $PARAMS + " --debug"
 
-        echo $PARAMS
+        echo $PARAMS + " line 41"
 
         if [  ${bamboo.SOOS_DEBUG} == "true" ]; then
             PARAMS+=" --debug"
