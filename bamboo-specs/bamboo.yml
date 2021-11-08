@@ -7,7 +7,7 @@ variables:
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
   SOOS_RULES: "false"
-  
+
 plan:
   project-key: DAST
   name: SOOS Analysis
@@ -43,7 +43,7 @@ Run analysis:
             PARAMS="$PARAMS --ajaxSpider"
         fi
         echo $LINENO
-        if [[ ! '${bamboo.SOOS_RULES+x}' ]]; then
+        if [[ '${bamboo.SOOS_RULES+x}' ]]; then
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
             echo $PARAMS
         fi
