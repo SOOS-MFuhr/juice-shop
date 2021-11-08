@@ -41,7 +41,7 @@ Run analysis:
             PARAMS+=" --ajaxSpider"
         fi
         if [  "$bamboo.SOOS_RULES" != "" ]; then
-            PARAMS+=" --rules="{$bamboo.SOOS_RULES}
+            PARAMS+=" --rules="${bamboo.SOOS_RULES}
         fi
         if [  "$bamboo.SOOS_CONTEXT_FILE" != "" ]; then
             PARAMS+=" --contextFile="${bamboo.SOOS_CONTEXT_FILE}
