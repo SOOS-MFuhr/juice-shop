@@ -47,7 +47,7 @@ Run analysis:
         fi
         
         
-        docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
+        #docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
 
         
 
