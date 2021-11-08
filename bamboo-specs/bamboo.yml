@@ -6,6 +6,9 @@ variables:
   SOOS_SCAN_MODE: 'baseline'
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
+  SOOS_DEBUB: ''
+  SOOS_AJAX_SPIDER: ''
+
   
 
 plan:
@@ -33,8 +36,6 @@ Run analysis:
     - script: |
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
 
-        echo ${bamboo.SOOS_DEBUG}
-        
         if [  "${bamboo.SOOS_DEBUG}" == "true" ]; then
             PARAMS="$PARAMS --debug"
         fi
