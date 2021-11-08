@@ -47,22 +47,22 @@ Run analysis:
             echo "OK 2do IF"
             echo $PARAMS
         fi
-        if [  -z '${bamboo.SOOS_RULES}' != "" ]; then
+        if [[  -z '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' != "" ]]; then
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
-        if [  -z '${bamboo.SOOS_CONTEXT_FILE}' != "" ]; then
+        if [[  -z '${bamboo.SOOS_CONTEXT_FILE}' && '${bamboo.SOOS_CONTEXT_FILE}' != "" ]]; then
             PARAMS="$PARAMS --contextFile=${bamboo.SOOS_CONTEXT_FILE}"
         fi
-        if [  -z '${bamboo.SOOS_CONTEXT_USER}' != "" ]; then
+        if [[  -z '${bamboo.SOOS_CONTEXT_USER}' && '${bamboo.SOOS_CONTEXT_USER}' != "" ]]; then
             PARAMS="$PARAMS --contextUser=${bamboo.SOOS_CONTEXT_USER}"
         fi
-        if [  -z '${bamboo.SOOS_FULL_SCAN_MINUTES}' != "" ]; then
+        if [[  -z '${bamboo.SOOS_FULL_SCAN_MINUTES}' && '${bamboo.SOOS_FULL_SCAN_MINUTES}' != "" ]]; then
             PARAMS="$PARAMS --fullScanMinutes=${bamboo.SOOS_FULL_SCAN_MINUTES}"
         fi
-        if [  -z '${bamboo.SOOS_API_SCAN_FORMAT}' != "" ]; then
+        if [[  -z '${bamboo.SOOS_API_SCAN_FORMAT}' && '${bamboo.SOOS_API_SCAN_FORMAT}' != "" ]]; then
             PARAMS="$PARAMS --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}"
         fi
-        if [  -z '${bamboo.bamboo.SOOS_LEVEL}' != "" ]; then
+        if [[  -z '${bamboo.bamboo.SOOS_LEVEL}' && '${bamboo.bamboo.SOOS_LEVEL}' != "" ]]; then
             PARAMS="$PARAMS --level=${bamboo.SOOS_LEVEL}"
         fi
         
