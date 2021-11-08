@@ -32,11 +32,11 @@ Run analysis:
         ###
     - script: |
 
-        PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
+        PARAMS='--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}'
         
         echo $PARAMS + " line 37"
 
-        PARAMS+=" --debug"
+        PARAMS+=' --debug'
 
         echo $PARAMS + " line 41"
 
