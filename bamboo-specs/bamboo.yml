@@ -35,7 +35,8 @@ Run analysis:
         docker rm -f dast
         docker run -d --name dast ghcr.io/soos-abenassi/dast:0.6
         echo " run OK "
-        docker exec -it dast bash
+        docker exec dast '
+        
         echo " exec OK "
         cd /zap/
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=\"${bamboo.SOOS_PROJECT_NAME}\" --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
@@ -64,6 +65,7 @@ Run analysis:
             PARAMS+=" --level=${bamboo.bamboo.SOOS_LEVEL}"
         fi
         python3 main.py ${bamboo.SOOS_TARGET_URL} ${PARAMS}
+        '
    
 
         docker rm -fv dast
