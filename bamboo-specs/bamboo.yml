@@ -42,24 +42,7 @@ Run analysis:
         if [[  -n '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
             PARAMS="$PARAMS --ajaxSpider"
         fi
-        if [[  -n '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' != "" ]]; then
-            PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
-        fi
-        if [[  -n '${bamboo.SOOS_CONTEXT_FILE}' && '${bamboo.SOOS_CONTEXT_FILE}' != "" ]]; then
-            PARAMS="$PARAMS --contextFile=${bamboo.SOOS_CONTEXT_FILE}"
-        fi
-        if [[  -n '${bamboo.SOOS_CONTEXT_USER}' && '${bamboo.SOOS_CONTEXT_USER}' != "" ]]; then
-            PARAMS="$PARAMS --contextUser=${bamboo.SOOS_CONTEXT_USER}"
-        fi
-        if [[  -n '${bamboo.SOOS_FULL_SCAN_MINUTES}' && '${bamboo.SOOS_FULL_SCAN_MINUTES}' != "" ]]; then
-            PARAMS="$PARAMS --fullScanMinutes=${bamboo.SOOS_FULL_SCAN_MINUTES}"
-        fi
-        if [[  -n '${bamboo.SOOS_API_SCAN_FORMAT}' && '${bamboo.SOOS_API_SCAN_FORMAT}' != "" ]]; then
-            PARAMS="$PARAMS --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}"
-        fi
-        if [[  -n '${bamboo.SOOS_LEVEL}' && '${bamboo.SOOS_LEVEL}' != "" ]]; then
-            PARAMS="$PARAMS --level=${bamboo.SOOS_LEVEL}"
-        fi
+        
         
         docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
 
