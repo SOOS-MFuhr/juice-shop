@@ -38,11 +38,11 @@ Run analysis:
         echo '${bamboo.SOOS_DEBUG}'
         echo '${bamboo.SOOS_AJAX_SPIDER}'
 
-        if [  -z '${bamboo.SOOS_DEBUG}' == "true" ]; then
+        if [[  -z '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "true" ]]; then
             PARAMS="$PARAMS --debug"
             echo "OK 1er IF"
         fi
-        if [  -z '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]; then
+        if [[  -z '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
             PARAMS="$PARAMS --ajaxSpider"
             echo "OK 2do IF"
             echo $PARAMS
