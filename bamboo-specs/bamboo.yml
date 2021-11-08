@@ -57,7 +57,7 @@ Run analysis:
         if [[  -n '${bamboo.SOOS_API_SCAN_FORMAT}' && '${bamboo.SOOS_API_SCAN_FORMAT}' != "" ]]; then
             PARAMS="$PARAMS --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}"
         fi
-        if [[  -n '${bamboo.bamboo.SOOS_LEVEL}' && '${bamboo.bamboo.SOOS_LEVEL}' != "" ]]; then
+        if [[  -n '${bamboo.SOOS_LEVEL}' && '${bamboo.SOOS_LEVEL}' != "" ]]; then
             PARAMS="$PARAMS --level=${bamboo.SOOS_LEVEL}"
         fi
         
