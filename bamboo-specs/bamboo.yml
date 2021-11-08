@@ -40,6 +40,36 @@ Run analysis:
         echo '${bamboo.SOOS_DEBUG}'
         echo '${bamboo.SOOS_AJAX_SPIDER}'
 
+        if [  '${bamboo.SOOS_DEBUG}' == "true" ]; then
+            PARAMS="$PARAMS --debug"
+            echo "OK 1er IF"
+        fi
+        if [  '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]; then
+            PARAMS="$PARAMS --ajaxSpider"
+            echo "OK 2do IF"
+            echo $PARAMS
+        fi
+        if [  ${bamboo.SOOS_RULES}" != "" ]; then
+            PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
+        fi
+        if [  '${bamboo.SOOS_CONTEXT_FILE}' != "" ]; then
+            PARAMS="$PARAMS --contextFile=${bamboo.SOOS_CONTEXT_FILE}"
+        fi
+        if [  '${bamboo.SOOS_CONTEXT_USER}' != "" ]; then
+            PARAMS="$PARAMS --contextUser=${bamboo.SOOS_CONTEXT_USER}"
+        fi
+        if [  '${bamboo.SOOS_FULL_SCAN_MINUTES}' != "" ]; then
+            PARAMS="$PARAMS --fullScanMinutes=${bamboo.SOOS_FULL_SCAN_MINUTES}"
+        fi
+        if [  '${bamboo.SOOS_API_SCAN_FORMAT}' != "" ]; then
+            PARAMS="$PARAMS --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}"
+        fi
+        if [  '${bamboo.bamboo.SOOS_LEVE'}" != "" ]; then
+            PARAMS="$PARAMS --level=${bamboo.SOOS_LEVEL}"
+        fi
+        
+        docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
+
         
 
 
