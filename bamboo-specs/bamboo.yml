@@ -41,6 +41,8 @@ Run analysis:
         
         chmod +x pythonParams.sh
         
+        docker cp dast:/ pythonParams.sh
+
         cat pythonParams.sh
         docker exec dast pythonParams.sh
 
