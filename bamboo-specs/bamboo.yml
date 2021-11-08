@@ -6,8 +6,8 @@ variables:
   SOOS_SCAN_MODE: 'baseline'
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
-  SOOS_DEBUB: ''
-  SOOS_AJAX_SPIDER: ''
+  SOOS_DEBUB: 'false'
+  SOOS_AJAX_SPIDER: 'false'
 
   
 
