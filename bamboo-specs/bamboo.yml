@@ -33,10 +33,12 @@ Run analysis:
     - script: |
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
 
-        if [  ${bamboo.SOOS_DEBUG} == "true" ]; then
+        echo ${bamboo.SOOS_DEBUG}
+        
+        if [  "${bamboo.SOOS_DEBUG}" == "true" ]; then
             PARAMS="$PARAMS --debug"
         fi
-        if [  ${bamboo.SOOS_AJAX_SPIDER} == "true" ]; then
+        if [  "${bamboo.SOOS_AJAX_SPIDER}" == "true" ]; then
             PARAMS="$PARAMS --ajaxSpider"
         fi
         if [  ${bamboo.SOOS_RULES} != "" ]; then
