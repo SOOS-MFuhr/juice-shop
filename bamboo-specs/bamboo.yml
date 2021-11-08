@@ -49,7 +49,7 @@ Run analysis:
             echo "OK 2do IF"
             echo $PARAMS
         fi
-        if [  ${bamboo.SOOS_RULES}" != "" ]; then
+        if [  '${bamboo.SOOS_RULES}' != "" ]; then
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
         if [  '${bamboo.SOOS_CONTEXT_FILE}' != "" ]; then
