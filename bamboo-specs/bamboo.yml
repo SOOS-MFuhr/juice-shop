@@ -36,7 +36,7 @@ Run analysis:
         
         echo $PARAMS
 
-        PARAMS+=" --debug"
+        PARAMS= $PARAMS + " --debug"
 
         echo $PARAMS
 
