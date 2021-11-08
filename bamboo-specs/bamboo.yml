@@ -24,7 +24,7 @@ Run analysis:
     image: docker:stable-dind
     volumes: 
       "/var/run/docker.sock": "/var/run/docker.sock"
-    use-default-volumes: false
+    #use-default-volumes: false
     #docker-run-arguments:
     #- --privileged
   tasks:
