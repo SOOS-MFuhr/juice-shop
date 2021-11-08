@@ -28,7 +28,9 @@ Run analysis:
         # hello-world
         #
     - script: |
+
+        PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=\"${bamboo.SOOS_PROJECT_NAME}\" --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
       
-        docker run --rm ghcr.io/soos-abenassi/dast:0.6      
+        docker run --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS      
 
         echo "OK"
