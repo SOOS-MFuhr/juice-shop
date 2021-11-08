@@ -42,9 +42,12 @@ Run analysis:
         if [[  -n '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
             PARAMS="$PARAMS --ajaxSpider"
         fi
+        echo $LINENO
         if [[  -n '${bamboo.SOOS_RULES}' && ! -z '${bamboo.SOOS_RULES}' ]]; then
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
+        echo $LINENO
+
         
         
         #docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
