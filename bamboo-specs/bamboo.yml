@@ -23,8 +23,8 @@ stages:
 Run analysis:
   docker:
     image: docker:stable-dind
-    #volumes: 
-     # "/var/run/docker.sock": "/var/run/docker.sock"
+    volumes: 
+      "/var/run/docker.sock": "/var/run/docker.sock"
   tasks:
         # hello-world
         # OKK
@@ -33,38 +33,31 @@ Run analysis:
         ###
     - script: |
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
-
-        echo $PARAMS
-        echo '${bamboo.SOOS_DEBUG}'
-    
-        if [[  -n '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "false" ]]; then
-            echo "OK 1er IF"
-        fi
-
-
         
-        if [[  -z '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "true" ]]; then
+        # To check for non-null/non-zero string variable if set, use -n
+
+        if [[  -n '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "true" ]]; then
             PARAMS="$PARAMS --debug"
         fi
-        if [[  -z '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
+        if [[  -n '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
             PARAMS="$PARAMS --ajaxSpider"
         fi
-        if [[  -z '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' != "" ]]; then
+        if [[  -n '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' != "" ]]; then
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
-        if [[  -z '${bamboo.SOOS_CONTEXT_FILE}' && '${bamboo.SOOS_CONTEXT_FILE}' != "" ]]; then
+        if [[  -n '${bamboo.SOOS_CONTEXT_FILE}' && '${bamboo.SOOS_CONTEXT_FILE}' != "" ]]; then
             PARAMS="$PARAMS --contextFile=${bamboo.SOOS_CONTEXT_FILE}"
         fi
-        if [[  -z '${bamboo.SOOS_CONTEXT_USER}' && '${bamboo.SOOS_CONTEXT_USER}' != "" ]]; then
+        if [[  -n '${bamboo.SOOS_CONTEXT_USER}' && '${bamboo.SOOS_CONTEXT_USER}' != "" ]]; then
             PARAMS="$PARAMS --contextUser=${bamboo.SOOS_CONTEXT_USER}"
         fi
-        if [[  -z '${bamboo.SOOS_FULL_SCAN_MINUTES}' && '${bamboo.SOOS_FULL_SCAN_MINUTES}' != "" ]]; then
+        if [[  -n '${bamboo.SOOS_FULL_SCAN_MINUTES}' && '${bamboo.SOOS_FULL_SCAN_MINUTES}' != "" ]]; then
             PARAMS="$PARAMS --fullScanMinutes=${bamboo.SOOS_FULL_SCAN_MINUTES}"
         fi
-        if [[  -z '${bamboo.SOOS_API_SCAN_FORMAT}' && '${bamboo.SOOS_API_SCAN_FORMAT}' != "" ]]; then
+        if [[  -n '${bamboo.SOOS_API_SCAN_FORMAT}' && '${bamboo.SOOS_API_SCAN_FORMAT}' != "" ]]; then
             PARAMS="$PARAMS --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}"
         fi
-        if [[  -z '${bamboo.bamboo.SOOS_LEVEL}' && '${bamboo.bamboo.SOOS_LEVEL}' != "" ]]; then
+        if [[  -n '${bamboo.bamboo.SOOS_LEVEL}' && '${bamboo.bamboo.SOOS_LEVEL}' != "" ]]; then
             PARAMS="$PARAMS --level=${bamboo.SOOS_LEVEL}"
         fi
         
