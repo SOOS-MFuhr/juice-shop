@@ -45,10 +45,7 @@ Run analysis:
         if [[  -n '${bamboo.SOOS_RULES}' && ! -z '${bamboo.SOOS_RULES}' ]]; then
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
-        if [[  -n '${bamboo.SOOS_CONTEXT_FILE}' && ! -z '${bamboo.SOOS_CONTEXT_FILE}' ]]; then
-            PARAMS="$PARAMS --contextFile=${bamboo.SOOS_CONTEXT_FILE}"
-        fi
-       
+        
         
         #docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
 
