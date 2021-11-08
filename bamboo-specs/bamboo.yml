@@ -44,6 +44,6 @@ Run analysis:
         docker cp pythonParams.sh dast:/
 
         cat pythonParams.sh
-        docker exec dast pythonParams.sh
+        docker exec dast sh pythonParams.sh
 
         docker rm -fv dast
