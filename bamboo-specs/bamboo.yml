@@ -32,6 +32,8 @@ Run analysis:
         ###
     - script: |
 
+        SOOS_RULES_OK=${bamboo.SOOS_RULES+"OK"}
+
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
         
         # To check for non-null/non-zero string variable if set, use -n
@@ -44,7 +46,7 @@ Run analysis:
             PARAMS="$PARAMS --ajaxSpider"
         fi
         echo $LINENO
-        if [[ ! -z ${bamboo.SOOS_RULES} ]]; then
+        if [[ $SOOS_RULES_OK == "OK" ]]; then
             echo $PARAMS
             echo $LINENO  
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
