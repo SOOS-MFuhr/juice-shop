@@ -75,7 +75,7 @@ Run analysis:
 
         
         
-        docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS mkdir wrk
+        docker run -w /zap -i mkdir wrk --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
 
         
 
