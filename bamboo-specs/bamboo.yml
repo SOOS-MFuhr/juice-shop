@@ -70,6 +70,7 @@ Run analysis:
             PARAMS="$PARAMS --level=${bamboo.SOOS_LEVEL}"
         fi
        
+        echo $PARAMS
         echo $LINENO
 
         
