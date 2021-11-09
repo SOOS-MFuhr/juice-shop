@@ -32,7 +32,7 @@ Run analysis:
         ###
     - script: |
 
-        # SOOS_RULES_OK=${bamboo.SOOS_RULES:=foo}
+        SOOS_RULES_LENGTH=${#bamboo.SOOS_RULES}
 
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
         
@@ -46,11 +46,16 @@ Run analysis:
             PARAMS="$PARAMS --ajaxSpider"
         fi
         echo $LINENO
-        if [[ -n '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' -ne " " ]]; then
+        if [[ '${SOOS_RULES_LENGTH}' > 0 ]]; then
             echo $PARAMS
             echo $LINENO  
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
+        #if [[ -n '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' -ne "" ]]; then
+         #   echo $PARAMS
+          #  echo $LINENO  
+           # PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
+        #fi
        
         echo $LINENO
 
