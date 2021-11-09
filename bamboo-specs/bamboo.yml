@@ -6,7 +6,7 @@ variables:
   SOOS_SCAN_MODE: "baseline"
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
-  SOOS_RULES: "null"
+  SOOS_RULES: "true"
   SOOS_CONTEXT_FILE: "null"
   SOOS_CONTEXT_USER: "null"
   SOOS_FULL_SCAN_MINUTES: "null"
