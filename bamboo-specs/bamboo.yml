@@ -8,7 +8,7 @@ variables:
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
   SOOS_RULES: "true"
   SOOS_CONTEXT_FILE: "null"
-  SOOS_CONTEXT_USER: "null"
+  SOOS_CONTEXT_USER: "true"
   SOOS_FULL_SCAN_MINUTES: "null"
   SOOS_API_SCAN_FORMAT: "null"
   SOOS_LEVEL: "null"
