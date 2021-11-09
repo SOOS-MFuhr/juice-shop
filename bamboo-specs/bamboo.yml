@@ -50,6 +50,8 @@ Run analysis:
             echo $PARAMS
             echo $LINENO  
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
+            echo $PARAMS
+            echo $SOOS_RULES_LENGTH
         fi
         #if [[ -n '${bamboo.SOOS_RULES}' && '${bamboo.SOOS_RULES}' -ne "" ]]; then
          #   echo $PARAMS
