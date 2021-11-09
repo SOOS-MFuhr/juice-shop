@@ -44,7 +44,7 @@ Run analysis:
             PARAMS="$PARAMS --ajaxSpider"
         fi
         echo $LINENO
-        if [[ -v ${bamboo.SOOS_RULES} && ! -z '${bamboo.SOOS_RULES}' ]]; then
+        if [[ ! -z '${bamboo.SOOS_RULES}' ]]; then
             echo $PARAMS
             echo $LINENO  
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
