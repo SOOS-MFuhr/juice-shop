@@ -6,9 +6,9 @@ variables:
   SOOS_SCAN_MODE: "baseline"
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
-  SOOS_RULES: "true"
+  SOOS_RULES: "null"
   SOOS_CONTEXT_FILE: "null"
-  SOOS_CONTEXT_USER: "true"
+  SOOS_CONTEXT_USER: "null"
   SOOS_FULL_SCAN_MINUTES: "null"
   SOOS_API_SCAN_FORMAT: "null"
   SOOS_LEVEL: "null"
@@ -75,7 +75,7 @@ Run analysis:
 
         
         
-        #docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
+        docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS
 
         
 
