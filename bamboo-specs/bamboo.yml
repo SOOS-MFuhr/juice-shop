@@ -37,10 +37,10 @@ Run analysis:
         # To check for non-null/non-zero string variable if set, use -n
         # To check if a string variable if empty use:-z - for not empty use: ! -z
 
-        if [[ -n ${bamboo.SOOS_DEBUG} && ${bamboo.SOOS_DEBUG} == "true" ]]; then
+        if [[ -n '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "true" ]]; then
             PARAMS="$PARAMS --debug"
         fi
-        if [[ -n ${bamboo.SOOS_AJAX_SPIDER} && ${bamboo.SOOS_AJAX_SPIDER} == "true" ]]; then
+        if [[ -n '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
             PARAMS="$PARAMS --ajaxSpider"
         fi
         echo $LINENO
