@@ -45,6 +45,7 @@ Run analysis:
         echo $LINENO
         if [[ -n '${bamboo.SOOS_RULES}' || '${bamboo.SOOS_RULES}' ]]; then
             echo $PARAMS
+            echo $LINENO  
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
        
