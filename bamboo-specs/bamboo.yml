@@ -6,12 +6,6 @@ variables:
   SOOS_SCAN_MODE: "baseline"
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
   SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
-  SOOS_RULES: "null"
-  SOOS_CONTEXT_FILE: "null"
-  SOOS_CONTEXT_USER: "null"
-  SOOS_FULL_SCAN_MINUTES: "null"
-  SOOS_API_SCAN_FORMAT: "null"
-  SOOS_LEVEL: "null"
 
 plan:
   project-key: DAST
@@ -40,40 +34,7 @@ Run analysis:
         # SOOS_RULES="${bamboo.SOOS_RULES:-"defaultValue"}"
 
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
-        
-        # To check for non-null/non-zero string variable if set, use -n
-        # To check if a string variable if empty use:-z - for not empty use: ! -z
-
-        if [[ -n '${bamboo.SOOS_DEBUG}' && '${bamboo.SOOS_DEBUG}' == "true" ]]; then
-            PARAMS="$PARAMS --debug"
-        fi
-        if [[ -n '${bamboo.SOOS_AJAX_SPIDER}' && '${bamboo.SOOS_AJAX_SPIDER}' == "true" ]]; then
-            PARAMS="$PARAMS --ajaxSpider"
-        fi
-        echo $LINENO
-        if [  '${bamboo.SOOS_RULES}' != "null" ]; then
-            PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
-        fi
-        if [  '${bamboo.SOOS_CONTEXT_FILE}' != "null" ]; then
-            PARAMS="$PARAMS --contextFile=${bamboo.SOOS_CONTEXT_FILE}"
-        fi
-        if [  '${bamboo.SOOS_CONTEXT_USER}' != "null" ]; then
-            PARAMS="$PARAMS --contextUser=${bamboo.SOOS_CONTEXT_USER}"
-        fi
-        if [  '${bamboo.SOOS_FULL_SCAN_MINUTES}' != "null" ]; then
-            PARAMS="$PARAMS --fullScanMinutes=${bamboo.SOOS_FULL_SCAN_MINUTES}"
-        fi
-        if [  '${bamboo.SOOS_API_SCAN_FORMAT}' != "null" ]; then
-            PARAMS="$PARAMS --apiScanFormat=${bamboo.SOOS_API_SCAN_FORMAT}"
-        fi
-        if [  '${bamboo.SOOS_LEVEL}' != "null" ]; then
-            PARAMS="$PARAMS --level=${bamboo.SOOS_LEVEL}"
-        fi
-       
-        echo $PARAMS
-        echo $LINENO
-
-        
+    
         
         docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS 
 
