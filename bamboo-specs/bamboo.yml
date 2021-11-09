@@ -44,8 +44,8 @@ Run analysis:
         fi
         echo $LINENO
         if [[ -z ${bamboo.SOOS_RULES} ]]; then
-            PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
             echo $PARAMS
+            PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
         fi
        
         echo $LINENO
