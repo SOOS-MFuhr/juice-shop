@@ -31,6 +31,8 @@ Run analysis:
         # docker run --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS 
         ###
     - script: |
+
+        $SOOS_RULES=${bamboo.SOOS_RULES}
         PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
         
         # To check for non-null/non-zero string variable if set, use -n
@@ -43,7 +45,7 @@ Run analysis:
             PARAMS="$PARAMS --ajaxSpider"
         fi
         echo $LINENO
-        if [[ ${bamboo.SOOS_RULES} ]]; then
+        if [[ -z $SOOS_RULES ]]; then
             echo $PARAMS
             echo $LINENO  
             PARAMS="$PARAMS --rules=${bamboo.SOOS_RULES}"
