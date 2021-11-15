@@ -52,7 +52,7 @@ pipeline{
 
                     echo "creating soos folder"
 
-                    mkdir -p $WORKSPACE/soos/workspace/
+                    mkdir -p "$WORKSPACE/soos/workspace/"
                     
                     echo "try to downloading files if they don't exist:"
 
