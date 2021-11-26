@@ -2,36 +2,78 @@ version: 2
 
 variables:
 
-  SOOS_PROJECT_NAME: "SOOS-DAST-Bamboo-Test"
-  SOOS_SCAN_MODE: "baseline"
+  SOOS_PROJECT_NAME: "BAMBO_TEST_MARIANO"
+
+  SOOS_LATEST_REPO: "https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download"
+
+  SOOS_TAGS: "https://api.github.com/repos/soos-io/soos-ci-analysis-python/releases/tags/$tag"
+
+  SOOS_INTEGRATION_NAME: "Bamboo"
+
+  SOOS_MODE: "run_and_wait"
+
+  SOOS_ON_FAILURE: "fail_the_build"
+
+  SOOS_DIRS_TO_EXCLUDE: "soos"
+
+  SOOS_ANALYSIS_RESULT_MAX_WAIT: 300
+
+  SOOS_ANALYSIS_RESULT_POLLING_INTERVAL: 10
+
+  SOOS_CHECKOUT_DIR: "./"
+
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
-  SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
+
+  SOOS_COMMIT_HASH: ""                # ENTER COMMIT HASH HERE IF KNOWN
+
+  SOOS_BRANCH_NAME: ""                # ENTER BRANCH NAME HERE IF KNOWN
+
+  SOOS_BRANCH_URI: ""                 # ENTER BRANCH URI HERE IF KNOWN
+
+  SOOS_BUILD_VERSION: ""              # ENTER BUILD VERSION HERE IF KNOWN
+
+  SOOS_BUILD_URI: ""                  # ENTER BUILD URI HERE IF KNOWN
+
+  SOOS_OPERATING_ENVIRONMENT: ""      # ENTER OPERATING ENVIRONMENT HERE 
+
+  SOOS_FILES_TO_EXCLUDE: ""           # ENTER FiLES TO EXCLUDE HERE
+  
 
 plan:
-  project-key: DAST
+  project-key: PROJECT_KEY
   name: SOOS Analysis
   key: SOOS
   
 
 stages:
-  - Run DAST analysis:
-    - Run DAST analysis
+  - Run SOOS analysis:
+    - Run analysis
     
 
-Run DAST analysis:
-  docker:
-    image: docker:stable-dind
-    volumes: 
-      "/var/run/docker.sock": "/var/run/docker.sock"
+Run analysis:
+  docker: python
   tasks:
     - script: |
+        #!/bin/bash
 
-        PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
-      
-        docker run -w /zap --rm ghcr.io/soos-abenassi/dast:0.6 ${bamboo.SOOS_TARGET_URL} $PARAMS 
+        export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
+        export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
 
-        
+        WORKSPACE=${PWD}
 
+        mkdir -p "$WORKSPACE/soos/workspace/"
 
+        cd "$WORKSPACE/soos"
 
-        
+        echo "downloading files:"
+
+        curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/soos.py -o soos.py
+        curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/requirements.txt -o requirements.txt
+
+        echo "files downloaded"
+
+        cd "$WORKSPACE"
+
+        pip3 install -r soos/requirements.txt --user
+
+        python3 soos/soos.py -m="${bamboo.SOOS_MODE}" -of="${bamboo.SOOS_ON_FAILURE}" -dte="${bamboo.SOOS_DIRS_TO_EXCLUDE}" -fte="${bamboo.SOOS_FILES_TO_EXCLUDE}" -wd="${bamboo.SOOS_CHECKOUT_DIR}" -armw=${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${bamboo.SOOS_API_BASE_URL}" -scp="${bamboo.SOOS_CHECKOUT_DIR}" -pn="${bamboo.SOOS_PROJECT_NAME}" -ch="${bamboo.SOOS_COMMIT_HASH}" -bn="${bamboo.SOOS_BRANCH_NAME}" -bruri="${bamboo.SOOS_BRANCH_URI}" -bldver="${bamboo.SOOS_BUILD_VERSION}" -blduri="${bamboo.SOOS_BUILD_URI}" -oe="${bamboo.SOOS_OPERATING_ENVIRONMENT}" -intn="${bamboo.SOOS_INTEGRATION_NAME}"
