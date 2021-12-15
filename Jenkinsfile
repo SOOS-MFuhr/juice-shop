@@ -39,7 +39,7 @@ pipeline {
                         PARAMS="${PARAMS} --level=${SOOS_LEVEL}"
                     fi
    
-                    docker run --rm soos-io/dast ${SOOS_TARGET_URL} $PARAMS 
+                    docker run --rm soosio/dast:alpha ${SOOS_TARGET_URL} $PARAMS
                 '''
             }
         }
