@@ -2,64 +2,30 @@ version: 2
 
 variables:
 
-  SOOS_PROJECT_NAME: "BAMBO_TEST_MARIANO"
-
-  SOOS_LATEST_REPO: "https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download"
-
-  SOOS_TAGS: "https://api.github.com/repos/soos-io/soos-ci-analysis-python/releases/tags/$tag"
-
-  SOOS_INTEGRATION_NAME: "Bamboo"
-
-  SOOS_MODE: "run_and_wait"
-
-  SOOS_ON_FAILURE: "fail_the_build"
-
-  SOOS_DIRS_TO_EXCLUDE: "soos"
-
-  SOOS_ANALYSIS_RESULT_MAX_WAIT: 300
-
-  SOOS_ANALYSIS_RESULT_POLLING_INTERVAL: 10
-
-  SOOS_CHECKOUT_DIR: "./"
-
+  SOOS_PROJECT_NAME: "bamboo_dast_mariano"
+  SOOS_SCAN_MODE: "baseline"
   SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
-  
+  SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
 
 plan:
   project-key: IN
-  name: SOOS Analysis
+  name: SOOS DAST Analysis
   key: SOOS
-  
+
 
 stages:
-  - Run SOOS analysis:
-    - Run analysis
-    
+  - Run DAST analysis:
+      - Run DAST analysis
 
-Run analysis:
-  docker: python
+
+Run DAST analysis:
+  docker:
+    image: docker:stable-dind
+    volumes:
+      "/var/run/docker.sock": "/var/run/docker.sock"
   tasks:
     - script: |
-        #!/bin/bash
 
-        export SOOS_CLIENT_ID=${bamboo.SOOS_CLIENT_ID}
-        export SOOS_API_KEY=${bamboo.SOOS_API_KEY}
+        PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
 
-        WORKSPACE=${PWD}
-
-        mkdir -p "$WORKSPACE/soos/workspace/"
-
-        cd "$WORKSPACE/soos"
-
-        echo "downloading files:"
-
-        curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/soos.py -o soos.py
-        curl -LJO https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download/requirements.txt -o requirements.txt
-
-        echo "files downloaded"
-
-        cd "$WORKSPACE"
-
-        pip3 install -r soos/requirements.txt --user
-
-        python3 soos/soos.py -m="${bamboo.SOOS_MODE}" -of="${bamboo.SOOS_ON_FAILURE}" -dte="${bamboo.SOOS_DIRS_TO_EXCLUDE}" -wd="${bamboo.SOOS_CHECKOUT_DIR}" -armw=${bamboo.SOOS_ANALYSIS_RESULT_MAX_WAIT} -arpi=${bamboo.SOOS_ANALYSIS_RESULT_POLLING_INTERVAL} -buri="${bamboo.SOOS_API_BASE_URL}" -scp="${bamboo.SOOS_CHECKOUT_DIR}" -pn="${bamboo.SOOS_PROJECT_NAME}"  -intn="${bamboo.SOOS_INTEGRATION_NAME}"
+        docker run -w /zap --rm soosio/dast:alpha ${bamboo.SOOS_TARGET_URL} $PARAMS
