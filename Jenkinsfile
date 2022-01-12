@@ -25,7 +25,7 @@ pipeline{
 
         SOOS_INTEGRATION_NAME="Jenkins"
 
-        SOOS_MODE="async_result"
+        SOOS_MODE="run_and_wait"
 
         SOOS_ON_FAILURE="fail_the_build"
 
