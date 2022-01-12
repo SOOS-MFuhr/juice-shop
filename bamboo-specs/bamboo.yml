@@ -1,0 +1,31 @@
+version: 2
+
+variables:
+
+  SOOS_PROJECT_NAME: "bamboo_dast_mariano"
+  SOOS_SCAN_MODE: "baseline"
+  SOOS_API_BASE_URL: "https://dev-api.soos.io/api/"
+  SOOS_TARGET_URL: "https://soos-dast-juice-shop.herokuapp.com/"
+
+plan:
+  project-key: IN
+  name: SOOS DAST Analysis
+  key: SOOS
+
+
+stages:
+  - Run DAST analysis:
+      - Run DAST analysis
+
+
+Run DAST analysis:
+  docker:
+    image: docker:stable-dind
+    volumes:
+      "/var/run/docker.sock": "/var/run/docker.sock"
+  tasks:
+    - script: |
+
+        PARAMS="--clientId=${bamboo.SOOS_CLIENT_ID} --apiKey=${bamboo.SOOS_API_KEY} --projectName=${bamboo.SOOS_PROJECT_NAME} --scanMode=${bamboo.SOOS_SCAN_MODE} --apiURL=${bamboo.SOOS_API_BASE_URL}"
+
+        docker run -w /zap --rm soosio/dast:alpha ${bamboo.SOOS_TARGET_URL} $PARAMS
