@@ -22,7 +22,7 @@ Run DAST analysis:
   docker:
     image: docker:stable-dind
     volumes:
-      "/var/run/docker.sock": "/var/run/docker.sock"
+      "//var/run/docker.sock": "/var/run/docker.sock"
   tasks:
     - script: |
 
