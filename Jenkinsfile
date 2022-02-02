@@ -7,7 +7,7 @@ pipeline{
     }
     environment {
 
-        SOOS_PROJECT_NAME="jenkins_sca_mariano_jenkinsfile" // ENTER YOUR PROJECT NAME HERE
+        SOOS_PROJECT_NAME="test_mariano_joaquin" // ENTER YOUR PROJECT NAME HERE
 
         SOOS_LATEST_REPO="https://github.com/soos-io/soos-ci-analysis-python/releases/latest/download"
 
@@ -39,7 +39,7 @@ pipeline{
 
         SOOS_CHECKOUT_DIR="./"
 
-        SOOS_API_BASE_URL="https://dev-api.soos.io/api/"
+        SOOS_API_BASE_URL="https://api.soos.io/api/"
 
     }
     stages{
